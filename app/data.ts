@@ -10,7 +10,7 @@ export type AppInfo = {
   icon?: string;
   accent: string;
   features?: string[];
-  store?: { label: string; href: string };
+  stores?: { label: string; href: string }[];
   releaseNote?: string;
   officialNotice?: string;
   legalName: string;
@@ -28,10 +28,9 @@ export const apps: AppInfo[] = [
     description: "問題演習、復習、学習進捗の確認に集中できる、シンプルな試験対策アプリ。",
     longDescription:
       "生成AIパスポート試験の学習に対応した問題演習アプリです。不要な機能をできるだけ減らし、問題演習、復習、学習進捗の確認に集中できる構成を採用しています。",
-    platforms: "Android",
+    platforms: "Android・iOS",
     icon: "/assets/images/generative-ai-passport.png",
     accent: "violet",
-    releaseNote: "※ iOS版は現在リリース準備中です。Android版に続いて公開予定です。",
     features: [
       "問題演習",
       "解説の確認",
@@ -40,10 +39,16 @@ export const apps: AppInfo[] = [
       "シンプルで迷いにくい操作",
       "スマートフォンでの学習に最適化",
     ],
-    store: {
-      label: "Google Playで見る",
-      href: "https://play.google.com/store/apps/details?id=net.aiautolab.aipassportstudy",
-    },
+    stores: [
+      {
+        label: "Google Playで見る",
+        href: "https://play.google.com/store/apps/details?id=net.aiautolab.aipassportstudy",
+      },
+      {
+        label: "App Storeで見る",
+        href: "https://apps.apple.com/jp/app/id6762196276",
+      },
+    ],
     officialNotice:
       "本アプリは、一般社団法人生成AI活用普及協会および生成AIパスポート試験の公式提供者とは関係のない非公式アプリです。",
     legalName: "生成AIパスポート｜試験対策 - クイズで学ぶ問題集アプリ",
@@ -66,10 +71,12 @@ export const apps: AppInfo[] = [
       "卓上で使いやすいシンプルな画面",
       "不要な操作を減らした設計",
     ],
-    store: {
-      label: "Google Playで見る",
-      href: "https://play.google.com/store/apps/details?id=net.aiautolab.tableclock",
-    },
+    stores: [
+      {
+        label: "Google Playで見る",
+        href: "https://play.google.com/store/apps/details?id=net.aiautolab.tableclock",
+      },
+    ],
     legalName: "TableClock",
     examDescription: "シンプルで見やすい時計表示",
   },

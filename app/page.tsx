@@ -31,60 +31,64 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <div className="shell hero-grid">
-          <div className="hero-copy">
+        <div className="shell hero-inner">
+          <div className="hero-headline">
             <p className="eyebrow light">MOBILE PRODUCTS / TOKYO</p>
             <h1>
-              学ぶ時間を、
-              <br />
-              <span>もっと心地よく。</span>
+              <span className="phrase">学ぶ時間を、</span>
+              <span className="accent">もっと心地よく。</span>
             </h1>
-            <p className="hero-lead">
-              迷いを減らし、本来の目的に集中できる。
-              <br className="desktop-only" />
-              AIAutoLabは、そんなモバイルプロダクトをつくっています。
-            </p>
-            <div className="hero-actions">
-              <Link className="button button-light" href="#products">
-                プロダクトを見る <span aria-hidden="true">↓</span>
-              </Link>
-              <Link className="button button-ghost" href="/about/">
-                私たちについて
-              </Link>
-            </div>
           </div>
 
-          <div className="hero-stage" aria-label="AIAutoLabのプロダクト">
-            <div className="stage-label">
-              <span>STUDIO / 01</span>
-              <span>BUILDING CALM EXPERIENCES</span>
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <p className="hero-lead">
+                迷いを減らし、本来の目的に集中できる。
+                <br className="desktop-only" />
+                AIAutoLabは、そんなモバイルプロダクトをつくっています。
+              </p>
+              <div className="hero-actions">
+                <Link className="button button-light" href="#products">
+                  プロダクトを見る <span aria-hidden="true">↓</span>
+                </Link>
+                <Link className="button button-ghost" href="/about/">
+                  私たちについて
+                </Link>
+              </div>
             </div>
-            <div className="stage-orbit orbit-one" aria-hidden="true" />
-            <div className="stage-orbit orbit-two" aria-hidden="true" />
-            <article className="floating-app app-main">
-              <span className="mini-label">NOW AVAILABLE</span>
-              <Image
-                src="/assets/images/generative-ai-passport.png"
-                alt="生成AIパスポート学習アプリ"
-                width={176}
-                height={176}
-                priority
-              />
-              <div>
-                <strong>生成AIパスポート</strong>
-                <span>Learn with focus.</span>
+
+            <div className="hero-stage" aria-label="AIAutoLabのプロダクト">
+              <div className="stage-label">
+                <span>STUDIO / 01</span>
+                <span>BUILDING CALM EXPERIENCES</span>
               </div>
-            </article>
-            <article className="floating-app app-sub">
-              <Image src="/assets/images/tableclock.png" alt="" width={62} height={62} />
-              <div>
-                <strong>TableClock</strong>
-                <span>Less, but better.</span>
-              </div>
-            </article>
-            <span className="focus-chip">
-              <i aria-hidden="true" /> Focus by design
-            </span>
+              <div className="stage-orbit orbit-one" aria-hidden="true" />
+              <div className="stage-orbit orbit-two" aria-hidden="true" />
+              <article className="floating-app app-main">
+                <span className="mini-label">NOW AVAILABLE</span>
+                <Image
+                  src="/assets/images/generative-ai-passport.png"
+                  alt="生成AIパスポート学習アプリ"
+                  width={176}
+                  height={176}
+                  priority
+                />
+                <div>
+                  <strong>生成AIパスポート</strong>
+                  <span>Learn with focus.</span>
+                </div>
+              </article>
+              <article className="floating-app app-sub">
+                <Image src="/assets/images/tableclock.png" alt="" width={62} height={62} />
+                <div>
+                  <strong>TableClock</strong>
+                  <span>Less, but better.</span>
+                </div>
+              </article>
+              <span className="focus-chip">
+                <i aria-hidden="true" /> Focus by design
+              </span>
+            </div>
           </div>
         </div>
 

@@ -40,10 +40,20 @@ export default async function AppPage({ params }: { params: Promise<{ slug: stri
             <Status value={app.status} />
             <h1>{app.name}</h1>
             <p>{app.longDescription}</p>
-            {app.store && (
-              <a className="button button-light" href={app.store.href} target="_blank" rel="noreferrer">
-                {app.store.label} <span aria-hidden="true">↗</span>
-              </a>
+            {app.stores && app.stores.length > 0 && (
+              <div className="store-actions">
+                {app.stores.map((store, index) => (
+                  <a
+                    className={`button ${index === 0 ? "button-light" : "button-ghost"}`}
+                    href={store.href}
+                    key={store.href}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {store.label} <span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+              </div>
             )}
           </div>
           <ProductVisual app={app} size="hero" />
