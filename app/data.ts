@@ -11,6 +11,7 @@ export type AppInfo = {
   accent: string;
   features?: string[];
   store?: { label: string; href: string };
+  releaseNote?: string;
   officialNotice?: string;
   legalName: string;
   examDescription: string;
@@ -27,9 +28,10 @@ export const apps: AppInfo[] = [
     description: "問題演習、復習、学習進捗の確認に集中できる、シンプルな試験対策アプリ。",
     longDescription:
       "生成AIパスポート試験の学習に対応した問題演習アプリです。不要な機能をできるだけ減らし、問題演習、復習、学習進捗の確認に集中できる構成を採用しています。",
-    platforms: "Android・iOS・iPadOS",
+    platforms: "Android",
     icon: "/assets/images/generative-ai-passport.png",
     accent: "violet",
+    releaseNote: "※ iOS版は現在リリース準備中です。Android版に続いて公開予定です。",
     features: [
       "問題演習",
       "解説の確認",
@@ -39,8 +41,8 @@ export const apps: AppInfo[] = [
       "スマートフォンでの学習に最適化",
     ],
     store: {
-      label: "App Storeで見る",
-      href: "https://apps.apple.com/jp/app/%E7%94%9F%E6%88%90ai%E3%83%91%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%AD%A6%E7%BF%92%E3%82%A2%E3%83%97%E3%83%AAai/id6762196276",
+      label: "Google Playで見る",
+      href: "https://play.google.com/store/apps/details?id=net.aiautolab.aipassportstudy",
     },
     officialNotice:
       "本アプリは、一般社団法人生成AI活用普及協会および生成AIパスポート試験の公式提供者とは関係のない非公式アプリです。",

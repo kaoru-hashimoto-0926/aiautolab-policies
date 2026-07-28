@@ -272,10 +272,12 @@
   }
 
   .hero-copy h1 span {
+    display: inline-block;
     color: var(--lime);
     font-family: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
     font-weight: 400;
     letter-spacing: -0.08em;
+    white-space: nowrap;
   }
 
   .hero-lead {
@@ -747,6 +749,11 @@
     color: var(--muted);
     font-size: 0.82rem;
     line-height: 1.75;
+  }
+
+  .card-copy .release-note {
+    padding-right: 48px;
+    font-size: 0.7rem;
   }
 
   .card-arrow {
@@ -1389,6 +1396,14 @@
     font-size: 0.96rem;
   }
 
+  .product-info .release-note {
+    max-width: 260px;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.7rem;
+    line-height: 1.7;
+  }
+
   .product-info a {
     color: #475149;
     font-size: 0.82rem;
@@ -1677,7 +1692,7 @@
     }
 
     .hero-copy h1 {
-      font-size: clamp(2.75rem, 13vw, 4.8rem);
+      font-size: clamp(2.1rem, 11vw, 4.8rem);
     }
 
     .hero-lead br {

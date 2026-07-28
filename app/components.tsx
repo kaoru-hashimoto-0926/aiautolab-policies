@@ -140,6 +140,7 @@ export function ProductCard({ app, featured = false }: { app: AppInfo; featured?
       <div className="card-copy">
         <h3>{app.name}</h3>
         <p>{app.description}</p>
+        {app.releaseNote && <p className="release-note">{app.releaseNote}</p>}
         <span className="card-arrow" aria-hidden="true">
           ↗
         </span>

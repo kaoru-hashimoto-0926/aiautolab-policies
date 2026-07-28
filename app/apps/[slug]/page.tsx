@@ -89,6 +89,7 @@ export default async function AppPage({ params }: { params: Promise<{ slug: stri
           <div>
             <span>PLATFORMS</span>
             <strong>{app.platforms}</strong>
+            {app.releaseNote && <small className="release-note">{app.releaseNote}</small>}
           </div>
           <div>
             <span>SUPPORT &amp; POLICY</span>
