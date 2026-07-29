@@ -59,8 +59,7 @@
   body {
     color: var(--ink);
     background: var(--paper);
-    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP",
-      system-ui, sans-serif;
+    font-family: var(--font-noto-sans-jp), system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.8;
     -webkit-font-smoothing: antialiased;
@@ -81,7 +80,7 @@
   }
 
   .serif {
-    font-family: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
+    font-family: var(--font-noto-sans-jp), system-ui, sans-serif;
     font-weight: 500;
   }
 
@@ -289,7 +288,7 @@
 
   .hero-headline h1 .accent {
     color: var(--lime);
-    font-family: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
+    font-family: var(--font-noto-sans-jp), system-ui, sans-serif;
     font-weight: 400;
     letter-spacing: -0.08em;
   }
@@ -894,7 +893,7 @@
 
   .principle-grid h3 {
     margin-top: 34px;
-    font-family: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
+    font-family: var(--font-noto-sans-jp), system-ui, sans-serif;
     font-size: 2.1rem;
     font-weight: 400;
   }
@@ -977,7 +976,7 @@
 
   .footer-statement {
     margin-top: 22px;
-    font-family: "Yu Mincho", "Hiragino Mincho ProN", Georgia, serif;
+    font-family: var(--font-noto-sans-jp), system-ui, sans-serif;
     font-size: clamp(2rem, 3.6vw, 3.8rem);
     line-height: 1.35;
     letter-spacing: -0.05em;
@@ -1276,7 +1275,7 @@
     border: 1px solid var(--line);
     border-radius: 50%;
     color: var(--ink);
-    font-family: Georgia, serif;
+    font-family: var(--font-noto-sans-jp), system-ui, sans-serif;
     font-style: italic;
   }
 
@@ -1596,7 +1595,7 @@
   .error-number {
     margin-top: 30px;
     color: var(--lime);
-    font-family: Georgia, serif;
+    font-family: var(--font-noto-sans-jp), system-ui, sans-serif;
     font-size: clamp(6rem, 18vw, 14rem);
     line-height: 0.9;
   }
@@ -1740,6 +1739,10 @@
 
     .focus-chip {
       left: 2px;
+    }
+
+    .app-main {
+      z-index: 4;
     }
 
     .app-sub {
