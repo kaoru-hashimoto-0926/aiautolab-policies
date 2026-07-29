@@ -1742,6 +1742,10 @@
       left: 2px;
     }
 
+    .app-main {
+      z-index: 4;
+    }
+
     .app-sub {
       right: 0;
     }
