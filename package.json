@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && node scripts/prepare-sites.mjs",
+    "check:site": "node scripts/check-static-site.mjs",
     "start": "next start"
   },
   "dependencies": {

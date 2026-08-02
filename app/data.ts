@@ -220,4 +220,12 @@ export function getApp(slug: string) {
   return apps.find((app) => app.slug === normalized);
 }
 
+export function getCanonicalAppSlug(slug: string) {
+  return slugAliases[slug] ?? slug;
+}
+
+export function isAppSlugAlias(slug: string) {
+  return Object.hasOwn(slugAliases, slug);
+}
+
 export const allAppSlugs = [...apps.map((app) => app.slug), ...Object.keys(slugAliases)];

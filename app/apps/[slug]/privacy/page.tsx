@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { LegalNav, PageHero } from "../../../components";
-import { allAppSlugs, getApp } from "../../../data";
+import { LegalNav, PageHero, StaticRedirect } from "../../../components";
+import { allAppSlugs, getApp, isAppSlugAlias } from "../../../data";
 
 export const dynamicParams = false;
 
@@ -9,9 +10,28 @@ export function generateStaticParams() {
   return allAppSlugs.map((slug) => ({ slug }));
 }
 
-export const metadata: Metadata = {
-  title: "プライバシーポリシー",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const app = getApp(slug);
+  if (!app) return {};
+  const canonical = `/apps/${app.slug}/privacy/`;
+  const title = `${app.shortName}のプライバシーポリシー`;
+  return {
+    title,
+    description: `${app.name}における情報の取り扱いについて定めたプライバシーポリシーです。`,
+    alternates: { canonical },
+    robots: isAppSlugAlias(slug) ? { index: false, follow: true } : undefined,
+    openGraph: {
+      title,
+      description: `${app.name}における情報の取り扱いについてご案内します。`,
+      url: canonical,
+    },
+  };
+}
 
 const adData = [
   "広告識別子（Advertising ID / IDFA 等）",
@@ -25,19 +45,29 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
   const { slug } = await params;
   const app = getApp(slug);
   if (!app) notFound();
+  if (isAppSlugAlias(slug)) {
+    return <StaticRedirect href={`/apps/${app.slug}/privacy/`} label={`${app.shortName}のプライバシーポリシー`} />;
+  }
   const learningApp = app.slug !== "tableclock";
 
   return (
     <>
       <PageHero
         eyebrow="PRIVACY / APP POLICY"
-        title="プライバシーポリシー"
+        title={`${app.shortName}のプライバシーポリシー`}
         lead={`${app.name}における情報の取り扱いについてご案内します。`}
+        breadcrumbs={[
+          { label: "ホーム", href: "/" },
+          { label: "アプリ一覧", href: "/apps/" },
+          { label: app.shortName, href: `/apps/${app.slug}/` },
+          { label: "プライバシーポリシー" },
+        ]}
       />
       <section className="legal-section">
         <div className="shell legal-layout">
-          <LegalNav slug={app.slug} active="privacy" />
+          <LegalNav slug={app.slug} appName={app.shortName} active="privacy" />
           <article className="legal-article">
+            <p className="legal-scope-label">対象アプリ: {app.name}</p>
             <p className="legal-intro">
               橋本 薫（以下「開発者」）は、「{app.legalName}」（以下「本アプリ」）における
               個人情報および利用情報の取り扱いについて、以下のとおり定めます。
@@ -116,6 +146,18 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
             <p>
               本アプリは Google AdMob を利用して広告を表示します。Google のプライバシーポリシーおよび広告に関する情報をご確認ください。
             </p>
+            <ul className="external-document-links">
+              <li>
+                <Link href="https://policies.google.com/privacy" rel="noreferrer" target="_blank">
+                  Google プライバシーポリシー（外部サイト） <span aria-hidden="true">↗</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://policies.google.com/technologies/ads" rel="noreferrer" target="_blank">
+                  Google 広告に関する情報（外部サイト） <span aria-hidden="true">↗</span>
+                </Link>
+              </li>
+            </ul>
             <h2>10. プライバシーポリシーの変更</h2>
             <p>
               開発者は、本ポリシーの内容を適宜見直し、必要に応じて改訂します。

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ProductVisual, Status } from "../../components";
-import { allAppSlugs, getApp } from "../../data";
+import { Breadcrumbs, ProductVisual, StaticRedirect, Status } from "../../components";
+import { allAppSlugs, apps, getApp, isAppSlugAlias } from "../../data";
 
 export const dynamicParams = false;
 
@@ -18,9 +18,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const app = getApp(slug);
   if (!app) return {};
+  const canonical = `/apps/${app.slug}/`;
   return {
     title: app.name,
     description: app.longDescription,
+    alternates: { canonical },
+    robots: isAppSlugAlias(slug) ? { index: false, follow: true } : undefined,
+    openGraph: {
+      title: app.name,
+      description: app.longDescription,
+      url: canonical,
+    },
   };
 }
 
@@ -28,12 +36,24 @@ export default async function AppPage({ params }: { params: Promise<{ slug: stri
   const { slug } = await params;
   const app = getApp(slug);
   if (!app) notFound();
+  if (isAppSlugAlias(slug)) {
+    return <StaticRedirect href={`/apps/${app.slug}/`} label={app.name} />;
+  }
 
   const isLive = app.status === "公開中";
+  const relatedApps = apps.filter((candidate) => candidate.slug !== app.slug).slice(0, 3);
 
   return (
     <>
       <header className="product-hero">
+        <Breadcrumbs
+          items={[
+            { label: "ホーム", href: "/" },
+            { label: "アプリ一覧", href: "/apps/" },
+            { label: app.shortName },
+          ]}
+          tone="dark"
+        />
         <div className="shell product-hero-grid">
           <div className="product-hero-copy">
             <p className="eyebrow light">{app.eyebrow}</p>
@@ -50,7 +70,7 @@ export default async function AppPage({ params }: { params: Promise<{ slug: stri
                     rel="noreferrer"
                     target="_blank"
                   >
-                    {store.label} <span aria-hidden="true">↗</span>
+                    {store.label} <span className="external-label">（外部サイト）</span> <span aria-hidden="true">↗</span>
                   </a>
                 ))}
               </div>
@@ -103,9 +123,9 @@ export default async function AppPage({ params }: { params: Promise<{ slug: stri
           </div>
           <div>
             <span>SUPPORT &amp; POLICY</span>
-            <Link href="/contact/">お問い合わせ</Link>
-            <Link href={`/apps/${app.slug}/privacy/`}>プライバシーポリシー</Link>
-            <Link href={`/apps/${app.slug}/terms/`}>利用規約</Link>
+            <Link href={`/apps/${app.slug}/support/`}>このアプリのサポート</Link>
+            <Link href={`/apps/${app.slug}/privacy/`}>このアプリのプライバシーポリシー</Link>
+            <Link href={`/apps/${app.slug}/terms/`}>このアプリの利用規約</Link>
           </div>
         </div>
 
@@ -115,6 +135,22 @@ export default async function AppPage({ params }: { params: Promise<{ slug: stri
             <p>{app.officialNotice}</p>
           </div>
         )}
+
+        <section className="shell related-apps" aria-labelledby="related-apps-heading">
+          <div>
+            <p className="eyebrow">RELATED APPS</p>
+            <h2 id="related-apps-heading">関連アプリ</h2>
+          </div>
+          <div className="related-app-links">
+            {relatedApps.map((relatedApp) => (
+              <Link href={`/apps/${relatedApp.slug}/`} key={relatedApp.slug}>
+                <span>{relatedApp.status}</span>
+                {relatedApp.name}
+              </Link>
+            ))}
+            <Link className="all-apps-link" href="/apps/">AIAutoLabのアプリ一覧を見る</Link>
+          </div>
+        </section>
       </section>
     </>
   );
