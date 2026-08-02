@@ -58,8 +58,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
         lead={`${app.name}における情報の取り扱いについてご案内します。`}
         breadcrumbs={[
           { label: "ホーム", href: "/" },
-          { label: "アプリ一覧", href: "/apps/" },
-          { label: app.shortName, href: `/apps/${app.slug}/` },
+          { label: app.shortName, href: "/#products" },
           { label: "プライバシーポリシー" },
         ]}
       />

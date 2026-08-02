@@ -43,7 +43,6 @@ export default function LegalPage() {
                 <article key={app.slug}>
                   <div>
                     <h3>{app.name}</h3>
-                    <Link href={`/apps/${app.slug}/`}>アプリ詳細</Link>
                   </div>
                   <div>
                     <Link href={`/apps/${app.slug}/privacy/`}>{app.shortName}のプライバシーポリシー</Link>

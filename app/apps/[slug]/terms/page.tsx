@@ -50,8 +50,7 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
         lead={`${app.name}の利用条件をご案内します。`}
         breadcrumbs={[
           { label: "ホーム", href: "/" },
-          { label: "アプリ一覧", href: "/apps/" },
-          { label: app.shortName, href: `/apps/${app.slug}/` },
+          { label: app.shortName, href: "/#products" },
           { label: "利用規約" },
         ]}
       />

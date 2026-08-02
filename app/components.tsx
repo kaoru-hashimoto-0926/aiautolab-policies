@@ -19,7 +19,7 @@ export function Header() {
           <span>AIAutoLab</span>
         </Link>
         <nav className="desktop-nav" aria-label="メインナビゲーション">
-          <Link href="/apps/">Apps</Link>
+          <Link href="/#products">Apps</Link>
           <Link href="/about/">About</Link>
           <Link href="/legal/">Legal</Link>
           <Link className="nav-contact" href="/contact/">
@@ -33,7 +33,7 @@ export function Header() {
           </summary>
           <nav aria-label="モバイルナビゲーション">
             <Link href="/">Home</Link>
-            <Link href="/apps/">Apps</Link>
+            <Link href="/#products">Apps</Link>
             <Link href="/about/">About</Link>
             <Link href="/legal/">Legal</Link>
             <Link href="/contact/">Contact</Link>
@@ -58,7 +58,7 @@ export function Footer() {
         <div className="footer-nav">
           <div>
             <p className="footer-label">Explore</p>
-            <Link href="/apps/">アプリ一覧</Link>
+            <Link href="/#products">アプリ一覧</Link>
             <Link href="/about/">AIAutoLabについて</Link>
             <Link href="/contact/">お問い合わせ</Link>
           </div>
@@ -174,7 +174,6 @@ export function ProductVisual({
 export function ProductCard({ app, featured = false }: { app: AppInfo; featured?: boolean }) {
   return (
     <article className={`product-card ${featured ? "featured-card" : ""}`}>
-      <Link className="card-hit" href={`/apps/${app.slug}/`} aria-label={`${app.name}の詳細を見る`} />
       <div className="card-meta">
         <p>{app.eyebrow}</p>
         <Status value={app.status} />
@@ -184,9 +183,17 @@ export function ProductCard({ app, featured = false }: { app: AppInfo; featured?
         <h3>{app.name}</h3>
         <p>{app.description}</p>
         {app.releaseNote && <p className="release-note">{app.releaseNote}</p>}
-        <span className="card-arrow" aria-hidden="true">
-          ↗
-        </span>
+        <div className="card-actions" aria-label={`${app.name}のリンク`}>
+          {app.stores?.map((store) => (
+            <a className="store-link" href={store.href} key={store.href} rel="noreferrer" target="_blank">
+              {store.label} <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+          <div className="policy-links">
+            <Link href={`/apps/${app.slug}/privacy/`}>プライバシーポリシー</Link>
+            <Link href={`/apps/${app.slug}/terms/`}>利用規約</Link>
+          </div>
+        </div>
       </div>
     </article>
   );
@@ -196,15 +203,13 @@ export function LegalNav({ slug, appName, active }: { slug: string; appName: str
   return (
     <nav className="legal-nav" aria-label={`${appName}の案内`}>
       <p className="legal-nav-label">{appName}</p>
-      <Link href={`/apps/${slug}/`}>このアプリの詳細</Link>
-      <Link href={`/apps/${slug}/support/`}>このアプリのサポート</Link>
       <Link aria-current={active === "privacy" ? "page" : undefined} href={`/apps/${slug}/privacy/`}>
         このアプリのプライバシーポリシー
       </Link>
       <Link aria-current={active === "terms" ? "page" : undefined} href={`/apps/${slug}/terms/`}>
         このアプリの利用規約
       </Link>
-      <Link href="/apps/">AIAutoLabのアプリ一覧へ戻る</Link>
+      <Link href="/#products">AIAutoLabのアプリ一覧へ戻る</Link>
     </nav>
   );
 }

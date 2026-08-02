@@ -48,8 +48,8 @@ export default function Home() {
                 AIAutoLabは、そんなモバイルプロダクトをつくっています。
               </p>
               <div className="hero-actions">
-                <Link className="button button-light" href="/apps/">
-                  アプリ一覧を見る <span aria-hidden="true">↗</span>
+                <Link className="button button-light" href="#products">
+                  アプリを見る <span aria-hidden="true">↓</span>
                 </Link>
                 <Link className="button button-ghost" href="/about/">
                   私たちについて
@@ -153,9 +153,6 @@ export default function Home() {
               <ProductCard app={app} key={app.slug} />
             ))}
           </div>
-          <Link className="directory-cta" href="/apps/">
-            すべてのアプリと規約・サポートを見る <span aria-hidden="true">↗</span>
-          </Link>
         </div>
       </section>
 
