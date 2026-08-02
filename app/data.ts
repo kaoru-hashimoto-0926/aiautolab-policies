@@ -55,32 +55,6 @@ export const apps: AppInfo[] = [
     examDescription: "生成AIパスポート試験",
   },
   {
-    slug: "tableclock",
-    name: "TableClock",
-    shortName: "TableClock",
-    eyebrow: "UTILITY",
-    status: "公開中",
-    description: "スマートフォンやタブレットを、見やすくシンプルな卓上時計に。",
-    longDescription:
-      "スマートフォンやタブレットを、シンプルな卓上時計として使用できるアプリです。必要な情報を見やすく表示し、余計な操作をせずにすぐ利用できることを重視しています。",
-    platforms: "Android",
-    icon: "/assets/images/tableclock.png",
-    accent: "cyan",
-    features: [
-      "大きく見やすい時刻表示",
-      "卓上で使いやすいシンプルな画面",
-      "不要な操作を減らした設計",
-    ],
-    stores: [
-      {
-        label: "Google Playで見る",
-        href: "https://play.google.com/store/apps/details?id=net.aiautolab.tableclock",
-      },
-    ],
-    legalName: "TableClock",
-    examDescription: "シンプルで見やすい時計表示",
-  },
-  {
     slug: "itpass",
     name: "ITパスポート",
     shortName: "ITパスポート",
@@ -205,6 +179,32 @@ export const apps: AppInfo[] = [
     examDescription: "FP3級技能検定",
     nonOfficialNotice:
       "本アプリは、日本FP協会および一般社団法人金融財政事情研究会（きんざい）とは一切関係のない非公式アプリです。",
+  },
+  {
+    slug: "tableclock",
+    name: "TableClock",
+    shortName: "TableClock",
+    eyebrow: "UTILITY",
+    status: "公開中",
+    description: "スマートフォンやタブレットを、見やすくシンプルな卓上時計に。",
+    longDescription:
+      "スマートフォンやタブレットを、シンプルな卓上時計として使用できるアプリです。必要な情報を見やすく表示し、余計な操作をせずにすぐ利用できることを重視しています。",
+    platforms: "Android",
+    icon: "/assets/images/tableclock.png",
+    accent: "cyan",
+    features: [
+      "大きく見やすい時刻表示",
+      "卓上で使いやすいシンプルな画面",
+      "不要な操作を減らした設計",
+    ],
+    stores: [
+      {
+        label: "Google Playで見る",
+        href: "https://play.google.com/store/apps/details?id=net.aiautolab.tableclock",
+      },
+    ],
+    legalName: "TableClock",
+    examDescription: "シンプルで見やすい時計表示",
   },
 ];
 
