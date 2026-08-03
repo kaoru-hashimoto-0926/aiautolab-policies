@@ -3,6 +3,11 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { AppInfo } from "./data";
 
+export type BreadcrumbItem = {
+  label: string;
+  href?: string;
+};
+
 export function Header() {
   return (
     <header className="site-header">
@@ -14,8 +19,9 @@ export function Header() {
           <span>AIAutoLab</span>
         </Link>
         <nav className="desktop-nav" aria-label="メインナビゲーション">
-          <Link href="/#products">Products</Link>
+          <Link href="/#products">Apps</Link>
           <Link href="/about/">About</Link>
+          <Link href="/legal/">Legal</Link>
           <Link className="nav-contact" href="/contact/">
             Contact <span aria-hidden="true">↗</span>
           </Link>
@@ -27,8 +33,9 @@ export function Header() {
           </summary>
           <nav aria-label="モバイルナビゲーション">
             <Link href="/">Home</Link>
-            <Link href="/#products">Products</Link>
+            <Link href="/#products">Apps</Link>
             <Link href="/about/">About</Link>
+            <Link href="/legal/">Legal</Link>
             <Link href="/contact/">Contact</Link>
           </nav>
         </details>
@@ -57,8 +64,9 @@ export function Footer() {
           </div>
           <div>
             <p className="footer-label">Legal</p>
-            <Link href="/privacy-policy/">プライバシーポリシー</Link>
-            <Link href="/terms-of-service/">サイト利用規約</Link>
+            <Link href="/legal/">法的情報一覧</Link>
+            <Link href="/legal/privacy/">Webサイトのプライバシーポリシー</Link>
+            <Link href="/legal/terms/">Webサイト利用規約</Link>
           </div>
         </div>
       </div>
@@ -80,13 +88,16 @@ export function PageHero({
   eyebrow,
   title,
   lead,
+  breadcrumbs,
 }: {
   eyebrow: string;
   title: ReactNode;
   lead: string;
+  breadcrumbs?: BreadcrumbItem[];
 }) {
   return (
     <header className="page-hero">
+      {breadcrumbs && <Breadcrumbs items={breadcrumbs} tone="dark" />}
       <div className="shell page-hero-grid">
         <p className="eyebrow light">{eyebrow}</p>
         <div>
@@ -97,6 +108,38 @@ export function PageHero({
       <span className="page-orbit orbit-a" aria-hidden="true" />
       <span className="page-orbit orbit-b" aria-hidden="true" />
     </header>
+  );
+}
+
+export function Breadcrumbs({
+  items,
+  tone = "light",
+}: {
+  items: BreadcrumbItem[];
+  tone?: "light" | "dark";
+}) {
+  return (
+    <nav className={`breadcrumbs breadcrumbs-${tone}`} aria-label="パンくず">
+      <ol className="shell">
+        {items.map((item, index) => (
+          <li key={`${item.label}-${index}`}>
+            {item.href ? <Link href={item.href}>{item.label}</Link> : <span aria-current="page">{item.label}</span>}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+export function StaticRedirect({ href, label }: { href: string; label: string }) {
+  return (
+    <section className="redirect-page">
+      <meta httpEquiv="refresh" content={`0;url=${href}`} />
+      <div className="shell">
+        <p>{label}へ移動します。</p>
+        <Link href={href}>{label}を開く</Link>
+      </div>
+    </section>
   );
 }
 
@@ -131,7 +174,6 @@ export function ProductVisual({
 export function ProductCard({ app, featured = false }: { app: AppInfo; featured?: boolean }) {
   return (
     <article className={`product-card ${featured ? "featured-card" : ""}`}>
-      <Link className="card-hit" href={`/apps/${app.slug}/`} aria-label={`${app.name}の詳細を見る`} />
       <div className="card-meta">
         <p>{app.eyebrow}</p>
         <Status value={app.status} />
@@ -141,25 +183,33 @@ export function ProductCard({ app, featured = false }: { app: AppInfo; featured?
         <h3>{app.name}</h3>
         <p>{app.description}</p>
         {app.releaseNote && <p className="release-note">{app.releaseNote}</p>}
-        <span className="card-arrow" aria-hidden="true">
-          ↗
-        </span>
+        <div className="card-actions" aria-label={`${app.name}のリンク`}>
+          {app.stores?.map((store) => (
+            <a className="store-link" href={store.href} key={store.href} rel="noreferrer" target="_blank">
+              {store.label} <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+          <div className="policy-links">
+            <Link href={`/apps/${app.slug}/privacy/`}>プライバシーポリシー</Link>
+            <Link href={`/apps/${app.slug}/terms/`}>利用規約</Link>
+          </div>
+        </div>
       </div>
     </article>
   );
 }
 
-export function LegalNav({ slug, active }: { slug: string; active: "privacy" | "terms" }) {
+export function LegalNav({ slug, appName, active }: { slug: string; appName: string; active: "privacy" | "terms" }) {
   return (
-    <nav className="legal-nav" aria-label="アプリポリシー">
-      <Link href="/#products">アプリ一覧</Link>
-      <Link href="/contact/">サポート</Link>
+    <nav className="legal-nav" aria-label={`${appName}の案内`}>
+      <p className="legal-nav-label">{appName}</p>
       <Link aria-current={active === "privacy" ? "page" : undefined} href={`/apps/${slug}/privacy/`}>
-        プライバシーポリシー
+        このアプリのプライバシーポリシー
       </Link>
       <Link aria-current={active === "terms" ? "page" : undefined} href={`/apps/${slug}/terms/`}>
-        利用規約
+        このアプリの利用規約
       </Link>
+      <Link href="/#products">AIAutoLabのアプリ一覧へ戻る</Link>
     </nav>
   );
 }

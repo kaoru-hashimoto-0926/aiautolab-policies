@@ -49,7 +49,7 @@ export default function Home() {
               </p>
               <div className="hero-actions">
                 <Link className="button button-light" href="#products">
-                  プロダクトを見る <span aria-hidden="true">↓</span>
+                  アプリを見る <span aria-hidden="true">↓</span>
                 </Link>
                 <Link className="button button-ghost" href="/about/">
                   私たちについて
@@ -124,6 +124,7 @@ export default function Home() {
       </section>
 
       <section className="products section" id="products">
+        <span className="anchor-alias" id="apps" aria-hidden="true" />
         <div className="shell">
           <div className="section-title-row">
             <div>

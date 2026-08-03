@@ -55,32 +55,6 @@ export const apps: AppInfo[] = [
     examDescription: "生成AIパスポート試験",
   },
   {
-    slug: "tableclock",
-    name: "TableClock",
-    shortName: "TableClock",
-    eyebrow: "UTILITY",
-    status: "公開中",
-    description: "スマートフォンやタブレットを、見やすくシンプルな卓上時計に。",
-    longDescription:
-      "スマートフォンやタブレットを、シンプルな卓上時計として使用できるアプリです。必要な情報を見やすく表示し、余計な操作をせずにすぐ利用できることを重視しています。",
-    platforms: "Android",
-    icon: "/assets/images/tableclock.png",
-    accent: "cyan",
-    features: [
-      "大きく見やすい時刻表示",
-      "卓上で使いやすいシンプルな画面",
-      "不要な操作を減らした設計",
-    ],
-    stores: [
-      {
-        label: "Google Playで見る",
-        href: "https://play.google.com/store/apps/details?id=net.aiautolab.tableclock",
-      },
-    ],
-    legalName: "TableClock",
-    examDescription: "シンプルで見やすい時計表示",
-  },
-  {
     slug: "itpass",
     name: "ITパスポート",
     shortName: "ITパスポート",
@@ -128,21 +102,110 @@ export const apps: AppInfo[] = [
     nonOfficialNotice:
       "本アプリは、独立行政法人情報処理推進機構（IPA）とは一切関係のない非公式アプリです。",
   },
-  ...(["1", "2", "3"] as const).map((grade, index): AppInfo => ({
-    slug: `fp${grade}`,
-    name: `FP${grade}級`,
-    shortName: `FP${grade}級`,
+  {
+    slug: "fp1",
+    name: "FP1級",
+    shortName: "FP1級",
     eyebrow: "FINANCIAL PLANNING",
     status: "準備中",
     description: "お金の知識を、暮らしにつながる確かな力へ。",
-    longDescription: `FP${grade}級試験の問題演習に集中できる、シンプルな学習アプリとして現在準備を進めています。`,
+    longDescription:
+      "FP1級試験の問題演習に集中できる、シンプルな学習アプリとして現在準備を進めています。",
     platforms: "Android・iOS",
-    accent: ["pink", "amber", "mint"][index],
-    legalName: `FP${grade}級｜試験対策 - クイズで学ぶ問題集アプリ`,
-    examDescription: `FP${grade}級技能検定`,
+    accent: "pink",
+    legalName: "FP1級｜試験対策 - クイズで学ぶ問題集アプリ",
+    examDescription: "FP1級技能検定",
     nonOfficialNotice:
       "本アプリは、日本FP協会および一般社団法人金融財政事情研究会（きんざい）とは一切関係のない非公式アプリです。",
-  })),
+  },
+  {
+    slug: "fp2",
+    name: "FP2級",
+    shortName: "FP2級",
+    eyebrow: "FINANCIAL PLANNING",
+    status: "公開中",
+    description: "クイズ形式の問題演習で、FP2級の合格を目指す学習アプリ。",
+    longDescription:
+      "FP2級技能検定の学習に対応した問題演習アプリです。選択式のクイズ形式で、スマートフォンから手軽に試験対策を進められます。",
+    platforms: "Android",
+    icon: "/assets/images/fp2.png",
+    accent: "amber",
+    features: [
+      "クイズ形式の問題演習",
+      "解説の確認",
+      "間違えた問題の復習",
+      "学習進捗の確認",
+      "シンプルで迷いにくい操作",
+      "スマートフォンでの学習に最適化",
+    ],
+    stores: [
+      {
+        label: "Google Playで見る",
+        href: "https://play.google.com/store/apps/details?id=net.aiautolab.fp2study",
+      },
+    ],
+    legalName: "FP2級｜試験対策 - クイズで学ぶ問題集アプリ",
+    examDescription: "FP2級技能検定",
+    nonOfficialNotice:
+      "本アプリは、日本FP協会および一般社団法人金融財政事情研究会（きんざい）とは一切関係のない非公式アプリです。",
+  },
+  {
+    slug: "fp3",
+    name: "FP3級",
+    shortName: "FP3級",
+    eyebrow: "FINANCIAL PLANNING",
+    status: "公開中",
+    description: "クイズ形式の問題演習で、FP3級の合格を目指す学習アプリ。",
+    longDescription:
+      "FP3級技能検定の学習に対応した問題演習アプリです。クイズ形式で、スマートフォンから手軽に試験対策を進められます。",
+    platforms: "Android",
+    icon: "/assets/images/fp3.png",
+    accent: "mint",
+    features: [
+      "クイズ形式の問題演習",
+      "解説の確認",
+      "間違えた問題の復習",
+      "学習進捗の確認",
+      "シンプルで迷いにくい操作",
+      "スマートフォンでの学習に最適化",
+    ],
+    stores: [
+      {
+        label: "Google Playで見る",
+        href: "https://play.google.com/store/apps/details?id=net.aiautolab.fp3study",
+      },
+    ],
+    legalName: "FP3級｜試験対策 - クイズで学ぶ問題集アプリ",
+    examDescription: "FP3級技能検定",
+    nonOfficialNotice:
+      "本アプリは、日本FP協会および一般社団法人金融財政事情研究会（きんざい）とは一切関係のない非公式アプリです。",
+  },
+  {
+    slug: "tableclock",
+    name: "TableClock",
+    shortName: "TableClock",
+    eyebrow: "UTILITY",
+    status: "公開中",
+    description: "スマートフォンやタブレットを、見やすくシンプルな卓上時計に。",
+    longDescription:
+      "スマートフォンやタブレットを、シンプルな卓上時計として使用できるアプリです。必要な情報を見やすく表示し、余計な操作をせずにすぐ利用できることを重視しています。",
+    platforms: "Android",
+    icon: "/assets/images/tableclock.png",
+    accent: "cyan",
+    features: [
+      "大きく見やすい時刻表示",
+      "卓上で使いやすいシンプルな画面",
+      "不要な操作を減らした設計",
+    ],
+    stores: [
+      {
+        label: "Google Playで見る",
+        href: "https://play.google.com/store/apps/details?id=net.aiautolab.tableclock",
+      },
+    ],
+    legalName: "TableClock",
+    examDescription: "シンプルで見やすい時計表示",
+  },
 ];
 
 export const slugAliases: Record<string, string> = {
@@ -155,6 +218,14 @@ export const slugAliases: Record<string, string> = {
 export function getApp(slug: string) {
   const normalized = slugAliases[slug] ?? slug;
   return apps.find((app) => app.slug === normalized);
+}
+
+export function getCanonicalAppSlug(slug: string) {
+  return slugAliases[slug] ?? slug;
+}
+
+export function isAppSlugAlias(slug: string) {
+  return Object.hasOwn(slugAliases, slug);
 }
 
 export const allAppSlugs = [...apps.map((app) => app.slug), ...Object.keys(slugAliases)];

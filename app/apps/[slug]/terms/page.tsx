@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { LegalNav, PageHero } from "../../../components";
-import { allAppSlugs, getApp } from "../../../data";
+import { LegalNav, PageHero, StaticRedirect } from "../../../components";
+import { allAppSlugs, getApp, isAppSlugAlias } from "../../../data";
 
 export const dynamicParams = false;
 
@@ -9,27 +10,55 @@ export function generateStaticParams() {
   return allAppSlugs.map((slug) => ({ slug }));
 }
 
-export const metadata: Metadata = {
-  title: "利用規約",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const app = getApp(slug);
+  if (!app) return {};
+  const canonical = `/apps/${app.slug}/terms/`;
+  const title = `${app.shortName}の利用規約`;
+  return {
+    title,
+    description: `${app.name}の利用条件を定めた利用規約です。`,
+    alternates: { canonical },
+    robots: isAppSlugAlias(slug) ? { index: false, follow: true } : undefined,
+    openGraph: {
+      title,
+      description: `${app.name}の利用条件をご案内します。`,
+      url: canonical,
+    },
+  };
+}
 
 export default async function AppTermsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const app = getApp(slug);
   if (!app) notFound();
+  if (isAppSlugAlias(slug)) {
+    return <StaticRedirect href={`/apps/${app.slug}/terms/`} label={`${app.shortName}の利用規約`} />;
+  }
   const notice = app.nonOfficialNotice ?? app.officialNotice;
 
   return (
     <>
       <PageHero
         eyebrow="TERMS / APP POLICY"
-        title="利用規約"
+        title={`${app.shortName}の利用規約`}
         lead={`${app.name}の利用条件をご案内します。`}
+        breadcrumbs={[
+          { label: "ホーム", href: "/" },
+          { label: app.shortName, href: "/#products" },
+          { label: "利用規約" },
+        ]}
       />
       <section className="legal-section">
         <div className="shell legal-layout">
-          <LegalNav slug={app.slug} active="terms" />
+          <LegalNav slug={app.slug} appName={app.shortName} active="terms" />
           <article className="legal-article">
+            <p className="legal-scope-label">対象アプリ: {app.name}</p>
             <p className="legal-intro">
               この利用規約（以下「本規約」）は、橋本 薫（以下「開発者」）が提供する「{app.legalName}」
               （以下「本アプリ」）の利用条件を定めるものです。本アプリをインストール、起動、
@@ -70,7 +99,11 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
               広告内容は第三者により提供されるため、開発者はその正確性、適法性、有用性について保証しません。
             </p>
             <h2>第8条（プライバシー）</h2>
-            <p>個人情報の取り扱いについては、別途定めるプライバシーポリシーをご確認ください。</p>
+            <p>
+              個人情報の取り扱いについては、別途定める
+              <Link href={`/apps/${app.slug}/privacy/`}>{app.shortName}のプライバシーポリシー</Link>
+              をご確認ください。
+            </p>
             <h2>第9条（サービスの変更・終了）</h2>
             <p>開発者は、利用者への事前の通知なく、本アプリの内容を変更、追加、削除、または提供終了することがあります。</p>
             <h2>第10条（利用規約の変更）</h2>
