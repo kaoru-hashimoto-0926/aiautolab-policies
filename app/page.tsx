@@ -26,6 +26,7 @@ const principles = [
 
 export default function Home() {
   const liveApps = apps.filter((app) => app.status === "公開中");
+  const featuredHeroApps = liveApps.filter((app) => app.slug !== "tableclock");
   const preparingApps = apps.filter((app) => app.status === "準備中");
 
   return (
@@ -64,27 +65,23 @@ export default function Home() {
               </div>
               <div className="stage-orbit orbit-one" aria-hidden="true" />
               <div className="stage-orbit orbit-two" aria-hidden="true" />
-              <article className="floating-app app-main">
-                <span className="mini-label">NOW AVAILABLE</span>
-                <Image
-                  src="/assets/images/generative-ai-passport.png"
-                  alt="生成AIパスポート学習アプリ"
-                  width={176}
-                  height={176}
-                  priority
-                />
-                <div>
-                  <strong>生成AIパスポート</strong>
-                  <span>Learn with focus.</span>
-                </div>
-              </article>
-              <article className="floating-app app-sub">
-                <Image src="/assets/images/tableclock.png" alt="" width={62} height={62} />
-                <div>
-                  <strong>TableClock</strong>
-                  <span>Less, but better.</span>
-                </div>
-              </article>
+              <div className="hero-app-grid">
+                {featuredHeroApps.map((app, index) => (
+                  <article className="floating-app" key={app.slug}>
+                    <span className="mini-label">NOW AVAILABLE</span>
+                    {app.icon && (
+                      <Image
+                        src={app.icon}
+                        alt={app.shortName + "のアプリアイコン"}
+                        width={112}
+                        height={112}
+                        priority={index === 0}
+                      />
+                    )}
+                    <strong>{app.shortName}</strong>
+                  </article>
+                ))}
+              </div>
               <span className="focus-chip">
                 <i aria-hidden="true" /> Focus by design
               </span>
