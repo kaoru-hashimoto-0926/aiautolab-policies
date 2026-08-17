@@ -37,8 +37,10 @@ const adData = [
   "広告識別子（Advertising ID / IDFA 等）",
   "IPアドレス",
   "端末情報（端末モデル、OSバージョン、言語設定など）",
+  "アプリ情報（アプリ名、アプリバージョンなど）",
   "広告の表示・クリック等のイベント情報",
   "概算の位置情報（IPアドレス等から推定される地域情報）",
+  "通信状況、エラー等の診断情報",
 ];
 
 export default async function AppPrivacyPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -85,8 +87,12 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
             </p>
             <h3>2.2 広告配信に伴い取得される情報</h3>
             <p>
-              本アプリは Google LLC が提供する Google AdMob を利用して広告を表示します。
-              広告配信のため、以下の情報が Google に送信される場合があります。
+              本アプリは、Google LLC が提供する Google AdMob のメディエーション機能を利用して広告を表示します。
+              広告配信には、Google AdMob のほか、Unity Technologies が提供する Unity Ads および
+              Meta Platforms, Inc. またはその関連会社が提供する Meta Audience Network が、
+              競争入札その他の方式により参加する場合があります。
+              広告の入札、配信、効果測定等のため、入札結果にかかわらず、以下の情報がこれらの広告配信事業者に
+              自動的に収集・送信される場合があります。
             </p>
             <ul>{adData.map((item) => <li key={item}>{item}</li>)}</ul>
             {learningApp && (
@@ -109,31 +115,35 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
             <h2>3. 収集方法</h2>
             <p>
               本アプリの操作により外部の Google フォームが開き、ユーザーが入力・送信した内容が取得されます。
-              広告配信に伴う情報は、Google Mobile Ads SDK を通じて自動的に収集・送信されます。
+              広告配信に伴う情報は、Google Mobile Ads SDK、各広告配信事業者の SDK
+              およびメディエーションアダプターを通じて自動的に収集・送信されます。
             </p>
             <h2>4. 利用目的</h2>
             <ul>
               <li>問題や不具合の調査・修正</li>
               <li>個別のサポート対応</li>
               <li>本アプリの機能改善</li>
-              <li>広告の表示、配信の最適化、広告効果の測定、不正防止</li>
+              <li>広告の競争入札、表示、配信の最適化、パーソナライズ、広告効果の測定、不正防止</li>
             </ul>
             <h2>5. 第三者への提供</h2>
             <p>
               送信された情報は Google LLC が提供する Google フォームおよび Google スプレッドシート上に保存されます。
-              広告配信に伴い取得される情報は同社のプライバシーポリシーに基づき取り扱われます。
-              法令に基づく場合を除き、その他の第三者への提供は行いません。
+              広告配信に伴い取得される情報は、Google LLC、Unity Technologies、Meta Platforms, Inc.
+              またはその関連会社に送信され、各社のプライバシーポリシーに基づき取り扱われます。
+              上記のほか、法令に基づく場合を除き、開発者が取得した情報を第三者に提供しません。
             </p>
             <h2>6. ユーザーの選択とコントロール</h2>
             <ul>
               <li>フィードバック送信は任意であり、送信しなくても本アプリを利用できます。</li>
               {learningApp && <li>分析情報の送信は任意の同意に基づき、同意はアプリ内から撤回できます。</li>}
+              <li>広告に関する同意メッセージが表示された場合は、メッセージ内の選択肢から同意または拒否を選択できます。</li>
               <li>広告のパーソナライズや広告識別子は、端末の設定から制限・リセットできます。</li>
             </ul>
             <h2>7. 保存期間</h2>
             <p>
               フィードバックデータは問題対応・品質改善に必要な期間保持し、不要になった後に削除します。
-              広告配信に伴うデータの保存期間は Google LLC のポリシーに従います。
+              広告配信に伴うデータの保存期間は、Google LLC、Unity Technologies、Meta Platforms, Inc.
+              またはその関連会社の各ポリシーに従います。
             </p>
             <h2>8. お問い合わせ</h2>
             <dl>
@@ -143,7 +153,8 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
             </dl>
             <h2>9. 広告について</h2>
             <p>
-              本アプリは Google AdMob を利用して広告を表示します。Google のプライバシーポリシーおよび広告に関する情報をご確認ください。
+              本アプリは Google AdMob のメディエーション機能を利用し、Google AdMob、Unity Ads および
+              Meta Audience Network から広告が配信される場合があります。各社のプライバシーポリシー等をご確認ください。
             </p>
             <ul className="external-document-links">
               <li>
@@ -156,13 +167,23 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
                   Google 広告に関する情報（外部サイト） <span aria-hidden="true">↗</span>
                 </Link>
               </li>
+              <li>
+                <Link href="https://unity.com/legal/game-player-and-app-user-privacy-policy" rel="noreferrer" target="_blank">
+                  Unity ゲームプレイヤーおよびアプリユーザー向けプライバシーポリシー（外部サイト） <span aria-hidden="true">↗</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="https://www.facebook.com/privacy/policy/" rel="noreferrer" target="_blank">
+                  Meta プライバシーポリシー（外部サイト） <span aria-hidden="true">↗</span>
+                </Link>
+              </li>
             </ul>
             <h2>10. プライバシーポリシーの変更</h2>
             <p>
               開発者は、本ポリシーの内容を適宜見直し、必要に応じて改訂します。
               重要な変更がある場合は本アプリ内で通知することがあります。
             </p>
-            <p className="updated">最終更新日: 2026年7月27日</p>
+            <p className="updated">最終更新日: 2026年8月17日</p>
           </article>
         </div>
       </section>
