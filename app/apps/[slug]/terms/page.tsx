@@ -95,7 +95,10 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
             </ul>
             <h2>第7条（広告の掲載）</h2>
             <p>
-              本アプリは Google LLC が提供する Google AdMob を利用して広告を掲載します。
+              本アプリは、Google LLC が提供する Google AdMob のメディエーション機能を利用して広告を掲載します。
+              広告配信には、Google AdMob のほか、Unity Technologies が提供する Unity Ads および
+              Meta Platforms, Inc. またはその関連会社が提供する Meta Audience Network が、
+              競争入札その他の方式により参加する場合があります。
               広告内容は第三者により提供されるため、開発者はその正確性、適法性、有用性について保証しません。
             </p>
             <h2>第8条（プライバシー）</h2>
@@ -119,7 +122,7 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
               <div><dt>開発者</dt><dd>橋本 薫</dd></div>
               <div><dt>メールアドレス</dt><dd><a href="mailto:info@aiautolab.net">info@aiautolab.net</a></dd></div>
             </dl>
-            <p className="updated">最終更新日: 2026年7月27日</p>
+            <p className="updated">最終更新日: 2026年8月17日</p>
           </article>
         </div>
       </section>
