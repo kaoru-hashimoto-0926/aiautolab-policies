@@ -9,12 +9,13 @@ export type AppInfo = {
   platforms: string;
   icon?: string;
   accent: string;
+  kind: "learning" | "utility";
   features?: string[];
   stores?: { label: string; href: string }[];
   releaseNote?: string;
   officialNotice?: string;
   legalName: string;
-  examDescription: string;
+  legalPurpose: string;
   nonOfficialNotice?: string;
 };
 
@@ -31,6 +32,7 @@ export const apps: AppInfo[] = [
     platforms: "Android・iOS",
     icon: "/assets/images/generative-ai-passport.png",
     accent: "violet",
+    kind: "learning",
     features: [
       "問題演習",
       "解説の確認",
@@ -52,7 +54,29 @@ export const apps: AppInfo[] = [
     officialNotice:
       "本アプリは、一般社団法人生成AI活用普及協会および生成AIパスポート試験の公式提供者とは関係のない非公式アプリです。",
     legalName: "生成AIパスポート｜試験対策 - クイズで学ぶ問題集アプリ",
-    examDescription: "生成AIパスポート試験",
+    legalPurpose: "生成AIパスポート試験の利用・学習を支援するアプリケーション",
+  },
+  {
+    slug: "tethering-remote",
+    name: "Tethering Remote",
+    shortName: "Tethering Remote",
+    eyebrow: "WATCH UTILITY",
+    status: "準備中",
+    description: "Pixel Watchからスマートフォンのテザリング切り替えを補助する実用ツール。",
+    longDescription:
+      "Pixel WatchなどのWear OSデバイスから、スマートフォンのテザリング設定へのアクセスやオン・オフ操作をより少ない手順で行えるよう補助するアプリとして準備を進めています。",
+    platforms: "Android・Wear OS",
+    accent: "cyan",
+    kind: "utility",
+    features: [
+      "Pixel Watchからの操作を想定",
+      "テザリング設定へのアクセス補助",
+      "スマートフォンを取り出す手間を減らす設計",
+      "日常の通信まわりを扱いやすくするシンプルな操作",
+    ],
+    legalName: "Tethering Remote",
+    legalPurpose:
+      "Pixel Watch等からスマートフォンのテザリング設定へのアクセスやオン・オフ操作を補助するアプリケーション",
   },
   {
     slug: "itpass",
@@ -65,8 +89,9 @@ export const apps: AppInfo[] = [
       "ITパスポート試験の問題演習に集中できる、シンプルな学習アプリとして現在準備を進めています。",
     platforms: "Android・iOS",
     accent: "lime",
+    kind: "learning",
     legalName: "ITパスポート｜試験対策 - クイズで学ぶ問題集アプリ",
-    examDescription: "ITパスポート試験",
+    legalPurpose: "ITパスポート試験の利用・学習を支援するアプリケーション",
     nonOfficialNotice:
       "本アプリは、独立行政法人情報処理推進機構（IPA）とは一切関係のない非公式アプリです。",
   },
@@ -81,8 +106,9 @@ export const apps: AppInfo[] = [
       "情報セキュリティマネジメント試験の問題演習に集中できる、シンプルな学習アプリとして現在準備を進めています。",
     platforms: "Android・iOS",
     accent: "orange",
+    kind: "learning",
     legalName: "情報セキュリティマネジメント｜試験対策 - クイズで学ぶ問題集アプリ",
-    examDescription: "情報セキュリティマネジメント試験",
+    legalPurpose: "情報セキュリティマネジメント試験の利用・学習を支援するアプリケーション",
     nonOfficialNotice:
       "本アプリは、独立行政法人情報処理推進機構（IPA）とは一切関係のない非公式アプリです。",
   },
@@ -97,8 +123,9 @@ export const apps: AppInfo[] = [
       "基本情報技術者試験の問題演習に集中できる、シンプルな学習アプリとして現在準備を進めています。",
     platforms: "Android・iOS",
     accent: "blue",
+    kind: "learning",
     legalName: "基本情報技術者｜試験対策 - クイズで学ぶ問題集アプリ",
-    examDescription: "基本情報技術者試験",
+    legalPurpose: "基本情報技術者試験の利用・学習を支援するアプリケーション",
     nonOfficialNotice:
       "本アプリは、独立行政法人情報処理推進機構（IPA）とは一切関係のない非公式アプリです。",
   },
@@ -113,8 +140,9 @@ export const apps: AppInfo[] = [
       "FP1級試験の問題演習に集中できる、シンプルな学習アプリとして現在準備を進めています。",
     platforms: "Android・iOS",
     accent: "pink",
+    kind: "learning",
     legalName: "FP1級｜試験対策 - クイズで学ぶ問題集アプリ",
-    examDescription: "FP1級技能検定",
+    legalPurpose: "FP1級技能検定の利用・学習を支援するアプリケーション",
     nonOfficialNotice:
       "本アプリは、日本FP協会および一般社団法人金融財政事情研究会（きんざい）とは一切関係のない非公式アプリです。",
   },
@@ -130,6 +158,7 @@ export const apps: AppInfo[] = [
     platforms: "Android",
     icon: "/assets/images/fp2.png",
     accent: "amber",
+    kind: "learning",
     features: [
       "クイズ形式の問題演習",
       "解説の確認",
@@ -145,7 +174,7 @@ export const apps: AppInfo[] = [
       },
     ],
     legalName: "FP2級｜試験対策 - クイズで学ぶ問題集アプリ",
-    examDescription: "FP2級技能検定",
+    legalPurpose: "FP2級技能検定の利用・学習を支援するアプリケーション",
     nonOfficialNotice:
       "本アプリは、日本FP協会および一般社団法人金融財政事情研究会（きんざい）とは一切関係のない非公式アプリです。",
   },
@@ -161,6 +190,7 @@ export const apps: AppInfo[] = [
     platforms: "Android",
     icon: "/assets/images/fp3.png",
     accent: "mint",
+    kind: "learning",
     features: [
       "クイズ形式の問題演習",
       "解説の確認",
@@ -176,7 +206,7 @@ export const apps: AppInfo[] = [
       },
     ],
     legalName: "FP3級｜試験対策 - クイズで学ぶ問題集アプリ",
-    examDescription: "FP3級技能検定",
+    legalPurpose: "FP3級技能検定の利用・学習を支援するアプリケーション",
     nonOfficialNotice:
       "本アプリは、日本FP協会および一般社団法人金融財政事情研究会（きんざい）とは一切関係のない非公式アプリです。",
   },
@@ -192,6 +222,7 @@ export const apps: AppInfo[] = [
     platforms: "Android",
     icon: "/assets/images/tableclock.png",
     accent: "cyan",
+    kind: "utility",
     features: [
       "大きく見やすい時刻表示",
       "卓上で使いやすいシンプルな画面",
@@ -204,7 +235,7 @@ export const apps: AppInfo[] = [
       },
     ],
     legalName: "TableClock",
-    examDescription: "シンプルで見やすい時計表示",
+    legalPurpose: "シンプルで見やすい時計表示を提供するアプリケーション",
   },
 ];
 

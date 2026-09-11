@@ -49,9 +49,9 @@ export function Footer() {
     <footer className="site-footer">
       <div className="shell footer-top">
         <div>
-          <p className="footer-kicker">MAKE IT CLEAR.</p>
+          <p className="footer-kicker">USEFUL APPS.</p>
           <p className="footer-statement">
-            学びと日常を、<br />
+            日常の用事を、<br />
             もう少し軽やかに。
           </p>
         </div>

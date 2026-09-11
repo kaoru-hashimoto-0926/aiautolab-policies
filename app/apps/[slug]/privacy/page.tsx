@@ -50,7 +50,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
   if (isAppSlugAlias(slug)) {
     return <StaticRedirect href={`/apps/${app.slug}/privacy/`} label={`${app.shortName}のプライバシーポリシー`} />;
   }
-  const learningApp = app.slug !== "tableclock";
+  const learningApp = app.kind === "learning";
 
   return (
     <>
@@ -82,7 +82,9 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
             <h2>2. 収集する情報</h2>
             <h3>2.1 ユーザーが入力する情報</h3>
             <p>
-              ユーザーが任意で入力する自由記述のフィードバック内容（問題の誤り指摘、改善要望、動作不具合の報告など）を取得します。
+              ユーザーが任意で入力する自由記述のフィードバック内容
+              {learningApp ? "（問題の誤り指摘、改善要望、動作不具合の報告など）" : "（改善要望、動作不具合の報告など）"}
+              を取得します。
               {learningApp && " 問題報告時には、問題ID、報告種別、アプリバージョン、端末情報、送信日時等が送信される場合があります。"}
             </p>
             <h3>2.2 広告配信に伴い取得される情報</h3>
@@ -120,7 +122,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
             </p>
             <h2>4. 利用目的</h2>
             <ul>
-              <li>問題や不具合の調査・修正</li>
+              <li>{learningApp ? "問題や不具合" : "不具合や改善要望"}の調査・修正</li>
               <li>個別のサポート対応</li>
               <li>本アプリの機能改善</li>
               <li>広告の競争入札、表示、配信の最適化、パーソナライズ、広告効果の測定、不正防止</li>
