@@ -51,6 +51,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
     return <StaticRedirect href={`/apps/${app.slug}/privacy/`} label={`${app.shortName}のプライバシーポリシー`} />;
   }
   const learningApp = app.kind === "learning";
+  const tetheringRemoteApp = app.slug === "tethering-remote";
 
   return (
     <>
@@ -79,6 +80,12 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
               本ポリシーは、本アプリ内のフィードバック送信機能、サポート対応、広告配信
               {learningApp ? "および問題報告に付随する利用状況の分析" : ""}に伴い取得される情報の取り扱いに適用されます。
             </p>
+            {tetheringRemoteApp && (
+              <p>
+                本アプリは Android の AccessibilityService を使用します。AccessibilityService は、
+                テザリングのON/OFF操作を補助する目的でのみ使用し、それ以外の目的では使用しません。
+              </p>
+            )}
             <h2>2. 収集する情報</h2>
             <h3>2.1 ユーザーが入力する情報</h3>
             <p>
@@ -86,6 +93,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
               {learningApp ? "（問題の誤り指摘、改善要望、動作不具合の報告など）" : "（改善要望、動作不具合の報告など）"}
               を取得します。
               {learningApp && " 問題報告時には、問題ID、報告種別、アプリバージョン、端末情報、送信日時等が送信される場合があります。"}
+              {tetheringRemoteApp && " 不具合報告時には、端末情報等が送信される場合がありますが、これはAccessibilityServiceの利用とは別の機能です。不具合報告時にIPアドレスを送信することはありません。"}
             </p>
             <h3>2.2 広告配信に伴い取得される情報</h3>
             <p>

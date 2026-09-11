@@ -41,6 +41,7 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
     return <StaticRedirect href={`/apps/${app.slug}/terms/`} label={`${app.shortName}の利用規約`} />;
   }
   const notice = app.nonOfficialNotice ?? app.officialNotice;
+  const tetheringRemoteApp = app.slug === "tethering-remote";
 
   return (
     <>
@@ -66,6 +67,12 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
             </p>
             <h2>第1条（アプリの概要）</h2>
             <p>{app.legalPurpose}です。</p>
+            {tetheringRemoteApp && (
+              <p>
+                本アプリは Android の AccessibilityService を使用します。AccessibilityService は、
+                テザリングのON/OFF操作を補助する目的でのみ使用し、それ以外の目的では使用しません。
+              </p>
+            )}
             {notice && <p className="legal-notice"><strong>重要なお知らせ</strong>{notice}</p>}
             <h2>第2条（利用資格）</h2>
             <p>本アプリは13歳以上の方を対象としています。未成年者が利用する場合は、保護者の同意を得た上でご利用ください。</p>

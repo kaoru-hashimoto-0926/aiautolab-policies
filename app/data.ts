@@ -66,6 +66,7 @@ export const apps: AppInfo[] = [
     longDescription:
       "Pixel WatchなどのWear OSデバイスから、スマートフォンのテザリング設定へのアクセスやオン・オフ操作をより少ない手順で行えるよう補助するアプリとして準備を進めています。",
     platforms: "Android・Wear OS",
+    icon: "/assets/images/tethering-remote.png",
     accent: "cyan",
     kind: "utility",
     features: [
