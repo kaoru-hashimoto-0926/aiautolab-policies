@@ -6,15 +6,15 @@ import { apps } from "./data";
 const principles = [
   {
     number: "01",
-    title: "Clear",
-    ja: "迷わせない",
-    text: "必要な機能を、必要な場所に。初めてでも自然に使える体験を設計します。",
+    title: "Useful",
+    ja: "用事を軽くする",
+    text: "毎日の小さな手間を見つけ、少ない操作で目的に届くツールにします。",
   },
   {
     number: "02",
-    title: "Focused",
-    ja: "集中を守る",
-    text: "余計な表示や複雑な操作を減らし、学びや作業のリズムを邪魔しません。",
+    title: "Clear",
+    ja: "迷わせない",
+    text: "できることを増やすだけでなく、必要な機能を見つけやすく整理します。",
   },
   {
     number: "03",
@@ -26,7 +26,8 @@ const principles = [
 
 export default function Home() {
   const liveApps = apps.filter((app) => app.status === "公開中");
-  const featuredHeroApps = liveApps.filter((app) => app.slug !== "tableclock");
+  const utilityApps = apps.filter((app) => app.kind === "utility");
+  const featuredHeroApps = [...utilityApps, ...liveApps.filter((app) => app.kind !== "utility")].slice(0, 3);
   const preparingApps = apps.filter((app) => app.status === "準備中");
 
   return (
@@ -34,19 +35,19 @@ export default function Home() {
       <section className="hero">
         <div className="shell hero-inner">
           <div className="hero-headline">
-            <p className="eyebrow light">MOBILE PRODUCTS / TOKYO</p>
+            <p className="eyebrow light">APP DIRECTORY / TOKYO</p>
             <h1>
-              <span className="phrase">学ぶ時間を、</span>
-              <span className="accent">もっと心地よく。</span>
+              <span className="phrase">日常に役立つ</span>
+              <span className="accent">アプリを。</span>
             </h1>
           </div>
 
           <div className="hero-grid">
             <div className="hero-copy">
               <p className="hero-lead">
-                迷いを減らし、本来の目的に集中できる。
+                学習、時計、テザリングまわりまで。
                 <br className="desktop-only" />
-                AIAutoLabは、そんなモバイルプロダクトをつくっています。
+                AIAutoLabがつくる便利なモバイルアプリをまとめています。
               </p>
               <div className="hero-actions">
                 <Link className="button button-light" href="#products">
@@ -61,15 +62,15 @@ export default function Home() {
             <div className="hero-stage" aria-label="AIAutoLabのプロダクト">
               <div className="stage-label">
                 <span>STUDIO / 01</span>
-                <span>BUILDING CALM EXPERIENCES</span>
+                <span>TOOLS FOR DAILY USE</span>
               </div>
               <div className="stage-orbit orbit-one" aria-hidden="true" />
               <div className="stage-orbit orbit-two" aria-hidden="true" />
               <div className="hero-app-grid">
                 {featuredHeroApps.map((app, index) => (
                   <article className="floating-app" key={app.slug}>
-                    <span className="mini-label">NOW AVAILABLE</span>
-                    {app.icon && (
+                    <span className="mini-label">{app.status === "公開中" ? "NOW AVAILABLE" : "IN DEVELOPMENT"}</span>
+                    {app.icon ? (
                       <Image
                         src={app.icon}
                         alt={app.shortName + "のアプリアイコン"}
@@ -77,13 +78,17 @@ export default function Home() {
                         height={112}
                         priority={index === 0}
                       />
+                    ) : (
+                      <span className="hero-placeholder" aria-hidden="true">
+                        {app.shortName.slice(0, 2)}
+                      </span>
                     )}
                     <strong>{app.shortName}</strong>
                   </article>
                 ))}
               </div>
               <span className="focus-chip">
-                <i aria-hidden="true" /> Focus by design
+                <i aria-hidden="true" /> Useful by design
               </span>
             </div>
           </div>
@@ -91,8 +96,8 @@ export default function Home() {
 
         <div className="hero-ticker" aria-hidden="true">
           <div>
-            <span>LEARN CLEARLY</span><i /> <span>FOCUS DEEPLY</span><i /> <span>DESIGN THOUGHTFULLY</span>
-            <i /> <span>LEARN CLEARLY</span><i /> <span>FOCUS DEEPLY</span>
+            <span>UTILITY APPS</span><i /> <span>LEARNING TOOLS</span><i /> <span>MOBILE PRODUCTS</span>
+            <i /> <span>WATCH UTILITIES</span><i /> <span>SIMPLE TOOLS</span>
           </div>
         </div>
       </section>
@@ -102,15 +107,15 @@ export default function Home() {
           <p className="eyebrow">WHAT WE BELIEVE</p>
           <div>
             <h2>
-              機能を足す前に、
+              いろいろな用事を、
               <br />
-              <span className="serif">迷いをひとつ減らす。</span>
+              <span className="serif">少しだけ扱いやすく。</span>
             </h2>
             <div className="belief-copy">
-              <p className="large-copy">良いアプリは、できることの多さだけで決まりません。</p>
+              <p className="large-copy">AIAutoLabは、便利な小さなアプリを継続してつくっています。</p>
               <p>
-                必要な機能を、必要な場所に。小さな違和感まで見逃さず、
-                使うたびに馴染むプロダクトを目指します。
+                試験対策のような学習アプリから、時計やスマートウォッチ連携の実用ツールまで。
+                目的に対してまっすぐ使えることを大切にしています。
               </p>
               <Link className="text-link" href="/about/">
                 AIAutoLabの考え方 <span aria-hidden="true">↗</span>
@@ -126,12 +131,12 @@ export default function Home() {
           <div className="section-title-row">
             <div>
               <p className="eyebrow">SELECTED PRODUCTS</p>
-              <h2>つくっているもの</h2>
+              <h2>アプリ一覧</h2>
             </div>
             <p>
               公開中のアプリと、
               <br />
-              これから届けるアプリ。
+              準備中の便利ツール。
             </p>
           </div>
 
@@ -162,7 +167,7 @@ export default function Home() {
               <br />
               大切にしていること。
             </h2>
-            <p>見た目の美しさだけでなく、迷わず使い続けられることまで設計します。</p>
+            <p>見た目の美しさだけでなく、日々の使いやすさと導線の短さまで設計します。</p>
           </div>
           <div className="principle-grid">
             {principles.map((principle) => (

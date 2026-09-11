@@ -12,11 +12,11 @@ const notoSansJp = Noto_Sans_JP({
 export const metadata: Metadata = {
   metadataBase: new URL("https://aiautolab.net"),
   title: {
-    default: "AIAutoLab | 学ぶ時間を、もっと心地よく。",
+    default: "AIAutoLab | 日常に役立つアプリを。",
     template: "%s | AIAutoLab",
   },
   description:
-    "AIAutoLabは、学習や日常の目的に集中できる、シンプルで心地よいモバイルアプリを企画・開発・運営しています。",
+    "AIAutoLabは、学習アプリから日常を支える実用ツールまで、シンプルで使いやすいモバイルアプリを企画・開発・運営しています。",
   icons: {
     icon: "/assets/images/logo.svg",
   },
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     siteName: "AIAutoLab",
-    title: "AIAutoLab | 学ぶ時間を、もっと心地よく。",
-    description: "迷いを減らし、本来の目的に集中できるモバイルプロダクトを。",
+    title: "AIAutoLab | 日常に役立つアプリを。",
+    description: "学習アプリから実用ツールまで、シンプルで使いやすいモバイルプロダクトを。",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "AIAutoLab" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AIAutoLab | 学ぶ時間を、もっと心地よく。",
-    description: "迷いを減らし、本来の目的に集中できるモバイルプロダクトを。",
+    title: "AIAutoLab | 日常に役立つアプリを。",
+    description: "学習アプリから実用ツールまで、シンプルで使いやすいモバイルプロダクトを。",
     images: ["/og.png"],
   },
 };

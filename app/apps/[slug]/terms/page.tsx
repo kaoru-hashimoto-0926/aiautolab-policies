@@ -65,13 +65,13 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
               または使用した時点で、本規約に同意したものとみなされます。
             </p>
             <h2>第1条（アプリの概要）</h2>
-            <p>{app.examDescription}の利用・学習を支援するアプリケーションです。</p>
+            <p>{app.legalPurpose}です。</p>
             {notice && <p className="legal-notice"><strong>重要なお知らせ</strong>{notice}</p>}
             <h2>第2条（利用資格）</h2>
             <p>本アプリは13歳以上の方を対象としています。未成年者が利用する場合は、保護者の同意を得た上でご利用ください。</p>
             <h2>第3条（推奨動作環境）</h2>
             <dl>
-              <div><dt>対応OS</dt><dd>Android / iOS</dd></div>
+              <div><dt>対応OS</dt><dd>{app.platforms}</dd></div>
               <div><dt>インターネット接続</dt><dd>{app.slug === "tableclock" ? "広告表示のため必要となる場合があります" : "必須"}</dd></div>
             </dl>
             <p>推奨環境以外での動作は保証されません。</p>
