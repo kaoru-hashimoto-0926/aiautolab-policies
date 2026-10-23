@@ -26,7 +26,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version-file: .nvmrc
+          check-latest: true
           cache: npm
 
       - name: Configure GitHub Pages
@@ -39,6 +40,9 @@ jobs:
 
       - name: Build static site
         run: npm run build
+
+      - name: Check static site
+        run: npm run check:site
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
