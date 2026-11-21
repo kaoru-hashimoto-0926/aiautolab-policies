@@ -178,7 +178,7 @@ export const apps: AppInfo[] = [
     description: "クイズ形式の問題演習で、FP2級の合格を目指す学習アプリ。",
     longDescription:
       "FP2級技能検定の学習に対応した問題演習アプリです。選択式のクイズ形式で、スマートフォンから手軽に試験対策を進められます。",
-    platforms: "Android",
+    platforms: "Android・iOS",
     icon: "/assets/images/fp2.png",
     accent: "amber",
     kind: "learning",
@@ -195,6 +195,10 @@ export const apps: AppInfo[] = [
         label: "Google Playで見る",
         href: "https://play.google.com/store/apps/details?id=net.aiautolab.fp2study",
       },
+      {
+        label: "App Storeで見る",
+        href: "https://apps.apple.com/jp/app/id6804550059",
+      },
     ],
     legalName: "FP2級｜試験対策 - クイズで学ぶ問題集アプリ",
     legalPurpose: "FP2級技能検定の利用・学習を支援するアプリケーション",
@@ -210,7 +214,7 @@ export const apps: AppInfo[] = [
     description: "クイズ形式の問題演習で、FP3級の合格を目指す学習アプリ。",
     longDescription:
       "FP3級技能検定の学習に対応した問題演習アプリです。クイズ形式で、スマートフォンから手軽に試験対策を進められます。",
-    platforms: "Android",
+    platforms: "Android・iOS",
     icon: "/assets/images/fp3.png",
     accent: "mint",
     kind: "learning",
@@ -226,6 +230,10 @@ export const apps: AppInfo[] = [
       {
         label: "Google Playで見る",
         href: "https://play.google.com/store/apps/details?id=net.aiautolab.fp3study",
+      },
+      {
+        label: "App Storeで見る",
+        href: "https://apps.apple.com/jp/app/id6834650491",
       },
     ],
     legalName: "FP3級｜試験対策 - クイズで学ぶ問題集アプリ",
