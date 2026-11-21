@@ -45,7 +45,7 @@ export default function Home() {
           <div className="hero-grid">
             <div className="hero-copy">
               <p className="hero-lead">
-                学習、時計、テザリングまわりまで。
+                試験対策の学習アプリから、卓上時計まで。
                 <br className="desktop-only" />
                 AIAutoLabがつくる便利なモバイルアプリをまとめています。
               </p>
@@ -97,7 +97,7 @@ export default function Home() {
         <div className="hero-ticker" aria-hidden="true">
           <div>
             <span>UTILITY APPS</span><i /> <span>LEARNING TOOLS</span><i /> <span>MOBILE PRODUCTS</span>
-            <i /> <span>WATCH UTILITIES</span><i /> <span>SIMPLE TOOLS</span>
+            <i /> <span>EXAM PREP</span><i /> <span>SIMPLE TOOLS</span>
           </div>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function Home() {
             <div className="belief-copy">
               <p className="large-copy">AIAutoLabは、便利な小さなアプリを継続してつくっています。</p>
               <p>
-                試験対策のような学習アプリから、時計やスマートウォッチ連携の実用ツールまで。
+                試験対策のような学習アプリから、卓上時計のような実用ツールまで。
                 目的に対してまっすぐ使えることを大切にしています。
               </p>
               <Link className="text-link" href="/about/">
@@ -136,7 +136,7 @@ export default function Home() {
             <p>
               公開中のアプリと、
               <br />
-              準備中の便利ツール。
+              準備中のアプリ。
             </p>
           </div>
 

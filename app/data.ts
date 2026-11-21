@@ -57,29 +57,6 @@ export const apps: AppInfo[] = [
     legalPurpose: "生成AIパスポート試験の利用・学習を支援するアプリケーション",
   },
   {
-    slug: "tethering-remote",
-    name: "Tethering Remote",
-    shortName: "Tethering Remote",
-    eyebrow: "WATCH UTILITY",
-    status: "準備中",
-    description: "Pixel Watchからスマートフォンのテザリング切り替えを補助する実用ツール。",
-    longDescription:
-      "Pixel WatchなどのWear OSデバイスから、スマートフォンのテザリング設定へのアクセスやオン・オフ操作をより少ない手順で行えるよう補助するアプリとして準備を進めています。",
-    platforms: "Android・Wear OS",
-    icon: "/assets/images/tethering-remote.png",
-    accent: "cyan",
-    kind: "utility",
-    features: [
-      "Pixel Watchからの操作を想定",
-      "テザリング設定へのアクセス補助",
-      "スマートフォンを取り出す手間を減らす設計",
-      "日常の通信まわりを扱いやすくするシンプルな操作",
-    ],
-    legalName: "Tethering Remote",
-    legalPurpose:
-      "Pixel Watch等からスマートフォンのテザリング設定へのアクセスやオン・オフ操作を補助するアプリケーション",
-  },
-  {
     slug: "itpass",
     name: "ITパスポート",
     shortName: "ITパスポート",
