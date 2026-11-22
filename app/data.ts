@@ -157,13 +157,28 @@ export const apps: AppInfo[] = [
     name: "FP1級",
     shortName: "FP1級",
     eyebrow: "FINANCIAL PLANNING",
-    status: "準備中",
-    description: "お金の知識を、暮らしにつながる確かな力へ。",
+    status: "公開中",
+    description: "クイズ形式の問題演習で、FP1級の合格を目指す学習アプリ。",
     longDescription:
-      "FP1級試験の問題演習に集中できる、シンプルな学習アプリとして現在準備を進めています。",
-    platforms: "Android・iOS",
+      "FP1級技能検定（学科試験）の学習に対応した問題演習アプリです。練習モードと本番形式の試験モードで、スマートフォンから手軽に試験対策を進められます。",
+    platforms: "Android",
+    icon: "/assets/images/fp1.png",
     accent: "pink",
     kind: "learning",
+    features: [
+      "分野別・全分野ランダムの問題演習",
+      "すぐに正解を確認できる練習モード",
+      "本番形式で実力を確認できる試験モード",
+      "解説の確認",
+      "学習進捗の確認",
+      "スマートフォンでの学習に最適化",
+    ],
+    stores: [
+      {
+        label: "Google Playで見る",
+        href: "https://play.google.com/store/apps/details?id=net.aiautolab.fp1study",
+      },
+    ],
     legalName: "FP1級｜試験対策 - クイズで学ぶ問題集アプリ",
     legalPurpose: "FP1級技能検定の利用・学習を支援するアプリケーション",
     nonOfficialNotice:
