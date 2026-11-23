@@ -80,6 +80,12 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
               開発者は、本アプリで提供されるコンテンツの正確性、完全性、有用性について保証しません。
               本アプリの利用または利用不能により生じたいかなる損害についても、一切の責任を負いません。
             </p>
+            {app.kind === "learning" && (
+              <p>
+                本アプリの利用は、試験の合格を保証するものではありません。
+                試験の合否その他の試験結果について、開発者は一切の責任を負いません。
+              </p>
+            )}
             <h2>第5条（知的財産権）</h2>
             <p>
               本アプリおよび本アプリ内のコンテンツに関する著作権、その他一切の知的財産権は、
@@ -122,7 +128,7 @@ export default async function AppTermsPage({ params }: { params: Promise<{ slug:
               <div><dt>開発者</dt><dd>橋本 薫</dd></div>
               <div><dt>メールアドレス</dt><dd><a href="mailto:info@aiautolab.net">info@aiautolab.net</a></dd></div>
             </dl>
-            <p className="updated">最終更新日: 2026年8月17日</p>
+            <p className="updated">最終更新日: 2026年11月23日</p>
           </article>
         </div>
       </section>
