@@ -43,6 +43,15 @@ const adData = [
   "通信状況、エラー等の診断情報",
 ];
 
+const analyticsData = [
+  "アプリインスタンスID、Firebase インストールID",
+  "広告識別子（Advertising ID / IDFA 等。端末の設定で許可されている場合）",
+  "端末情報（端末モデル、OSバージョン、言語設定など）",
+  "アプリ情報（アプリバージョンなど）",
+  "初回起動、セッション開始、画面表示、広告の表示等のアプリ利用イベント",
+  "概算の位置情報（IPアドレス等から推定される国・地域）",
+];
+
 export default async function AppPrivacyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const app = getApp(slug);
@@ -77,6 +86,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
             <h2>1. 本ポリシーの適用範囲</h2>
             <p>
               本ポリシーは、本アプリ内のフィードバック送信機能、サポート対応、広告配信
+              {learningApp ? "、Firebase によるアプリ利用状況の分析" : ""}
               {learningApp ? "および問題報告に付随する利用状況の分析" : ""}に伴い取得される情報の取り扱いに適用されます。
             </p>
             <h2>2. 収集する情報</h2>
@@ -105,9 +115,16 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
                   学習セッション数・学習日数、疑似匿名のインストール識別子（install_id）等が送信される場合があります。
                   未同意の場合、Web版の場合、または本機能が無効の場合、これらは送信されません。
                 </p>
+                <h3>2.4 アプリ利用状況の分析に伴い取得される情報</h3>
+                <p>
+                  本アプリは、Google LLC が提供する Firebase（Google Analytics for Firebase および Firebase Remote Config）を
+                  利用しています。アプリの利用状況の把握、機能・品質の改善、広告効果の測定および設定の配信のため、
+                  以下の情報が自動的に収集・送信される場合があります。開発者がこれらの情報から個人を特定することはありません。
+                </p>
+                <ul>{analyticsData.map((item) => <li key={item}>{item}</li>)}</ul>
               </>
             )}
-            <h3>{learningApp ? "2.4" : "2.3"} 取得しない情報</h3>
+            <h3>{learningApp ? "2.5" : "2.3"} 取得しない情報</h3>
             <ul>
               <li>氏名・メールアドレス・Googleアカウント情報</li>
               <li>正確な位置情報（GPSなど）</li>
@@ -119,12 +136,14 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
               本アプリの操作により外部の Google フォームが開き、ユーザーが入力・送信した内容が取得されます。
               広告配信に伴う情報は、Google Mobile Ads SDK、各広告配信事業者の SDK
               およびメディエーションアダプターを通じて自動的に収集・送信されます。
+              {learningApp && " アプリ利用状況の分析に伴う情報は、Firebase SDK を通じて自動的に収集・送信されます。"}
             </p>
             <h2>4. 利用目的</h2>
             <ul>
               <li>{learningApp ? "問題や不具合" : "不具合や改善要望"}の調査・修正</li>
               <li>個別のサポート対応</li>
               <li>本アプリの機能改善</li>
+              {learningApp && <li>アプリの利用状況の把握・分析（利用者数、継続率、画面の利用状況等の統計）</li>}
               <li>広告の競争入札、表示、配信の最適化、パーソナライズ、広告効果の測定、不正防止</li>
             </ul>
             <h2>5. 第三者への提供</h2>
@@ -132,6 +151,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
               送信された情報は Google LLC が提供する Google フォームおよび Google スプレッドシート上に保存されます。
               広告配信に伴い取得される情報は、Google LLC、Unity Technologies、Meta Platforms, Inc.
               またはその関連会社に送信され、各社のプライバシーポリシーに基づき取り扱われます。
+              {learningApp && " アプリ利用状況の分析に伴い取得される情報は Google LLC に送信され、同社のプライバシーポリシーに基づき取り扱われます。"}
               上記のほか、法令に基づく場合を除き、開発者が取得した情報を第三者に提供しません。
             </p>
             <h2>6. ユーザーの選択とコントロール</h2>
@@ -140,12 +160,14 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
               {learningApp && <li>分析情報の送信は任意の同意に基づき、同意はアプリ内から撤回できます。</li>}
               <li>広告に関する同意メッセージが表示された場合は、メッセージ内の選択肢から同意または拒否を選択できます。</li>
               <li>広告のパーソナライズや広告識別子は、端末の設定から制限・リセットできます。</li>
+              {learningApp && <li>アプリ利用状況の分析における広告識別子の利用は、端末の設定（Android の広告 ID の削除、iOS の「App からのトラッキング要求を許可」等）から制限できます。</li>}
             </ul>
             <h2>7. 保存期間</h2>
             <p>
               フィードバックデータは問題対応・品質改善に必要な期間保持し、不要になった後に削除します。
               広告配信に伴うデータの保存期間は、Google LLC、Unity Technologies、Meta Platforms, Inc.
               またはその関連会社の各ポリシーに従います。
+              {learningApp && " Google Analytics for Firebase により収集された情報は、Google が定めるデータ保持ポリシーおよび当サービスの設定に従って保存・管理されます。ユーザー単位およびイベント単位のデータは、設定された保持期間の経過後に自動的に削除されます。ただし、集計された統計情報など、一部のデータには異なる保持条件が適用される場合があります。"}
             </p>
             <h2>8. お問い合わせ</h2>
             <dl>
@@ -169,6 +191,13 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
                   Google 広告に関する情報（外部サイト） <span aria-hidden="true">↗</span>
                 </Link>
               </li>
+              {learningApp && (
+                <li>
+                  <Link href="https://firebase.google.com/support/privacy" rel="noreferrer" target="_blank">
+                    Firebase のプライバシーとセキュリティ（外部サイト） <span aria-hidden="true">↗</span>
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link href="https://unity.com/legal/game-player-and-app-user-privacy-policy" rel="noreferrer" target="_blank">
                   Unity ゲームプレイヤーおよびアプリユーザー向けプライバシーポリシー（外部サイト） <span aria-hidden="true">↗</span>
@@ -185,7 +214,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
               開発者は、本ポリシーの内容を適宜見直し、必要に応じて改訂します。
               重要な変更がある場合は本アプリ内で通知することがあります。
             </p>
-            <p className="updated">最終更新日: 2026年8月17日</p>
+            <p className="updated">最終更新日: 2026年11月24日</p>
           </article>
         </div>
       </section>
