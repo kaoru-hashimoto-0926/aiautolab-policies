@@ -167,7 +167,7 @@ export default async function AppPrivacyPage({ params }: { params: Promise<{ slu
               フィードバックデータは問題対応・品質改善に必要な期間保持し、不要になった後に削除します。
               広告配信に伴うデータの保存期間は、Google LLC、Unity Technologies、Meta Platforms, Inc.
               またはその関連会社の各ポリシーに従います。
-              {learningApp && " Google Analytics for Firebase で取得される情報は、Google の定めるデータ保持期間に従い削除されます。"}
+              {learningApp && " Google Analytics for Firebase により収集された情報は、Google が定めるデータ保持ポリシーおよび当サービスの設定に従って保存・管理されます。ユーザー単位およびイベント単位のデータは、設定された保持期間の経過後に自動的に削除されます。ただし、集計された統計情報など、一部のデータには異なる保持条件が適用される場合があります。"}
             </p>
             <h2>8. お問い合わせ</h2>
             <dl>
