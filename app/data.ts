@@ -65,7 +65,7 @@ export const apps: AppInfo[] = [
     description: "練習モードと試験モードで、ITパスポート試験の合格を目指す学習アプリ。",
     longDescription:
       "ITパスポート試験の学習に対応した問題演習アプリです。ストラテジ系・マネジメント系・テクノロジ系の分野別に、スマートフォンから手軽に試験対策を進められます。",
-    platforms: "Android",
+    platforms: "Android・iOS",
     icon: "/assets/images/itpass.png",
     accent: "lime",
     kind: "learning",
@@ -82,6 +82,10 @@ export const apps: AppInfo[] = [
         label: "Google Playで見る",
         href: "https://play.google.com/store/apps/details?id=net.aiautolab.IP_study",
       },
+      {
+        label: "App Storeで見る",
+        href: "https://apps.apple.com/jp/app/id6835005794",
+      },
     ],
     legalName: "ITパスポート｜試験対策 - クイズで学ぶ問題集アプリ",
     legalPurpose: "ITパスポート試験の利用・学習を支援するアプリケーション",
@@ -97,7 +101,7 @@ export const apps: AppInfo[] = [
     description: "練習モードと試験モードで、情報セキュリティマネジメント試験の合格を目指す学習アプリ。",
     longDescription:
       "情報セキュリティマネジメント試験の学習に対応した問題演習アプリです。すぐに正解を確認できる練習モードと本番形式の試験モードで、スマートフォンから手軽に試験対策を進められます。",
-    platforms: "Android",
+    platforms: "Android・iOS",
     icon: "/assets/images/sg.png",
     accent: "orange",
     kind: "learning",
@@ -114,6 +118,10 @@ export const apps: AppInfo[] = [
         label: "Google Playで見る",
         href: "https://play.google.com/store/apps/details?id=net.aiautolab.SG_study",
       },
+      {
+        label: "App Storeで見る",
+        href: "https://apps.apple.com/jp/app/id6835072561",
+      },
     ],
     legalName: "情報セキュリティマネジメント｜試験対策 - クイズで学ぶ問題集アプリ",
     legalPurpose: "情報セキュリティマネジメント試験の利用・学習を支援するアプリケーション",
@@ -129,7 +137,7 @@ export const apps: AppInfo[] = [
     description: "練習モードと試験モードで、基本情報技術者試験の合格を目指す学習アプリ。",
     longDescription:
       "基本情報技術者試験の学習に対応した問題演習アプリです。すぐに正解を確認できる練習モードと本番形式の試験モードで、スマートフォンから手軽に試験対策を進められます。",
-    platforms: "Android",
+    platforms: "Android・iOS",
     icon: "/assets/images/fe.png",
     accent: "blue",
     kind: "learning",
@@ -146,6 +154,10 @@ export const apps: AppInfo[] = [
         label: "Google Playで見る",
         href: "https://play.google.com/store/apps/details?id=net.aiautolab.FE_study",
       },
+      {
+        label: "App Storeで見る",
+        href: "https://apps.apple.com/jp/app/id6835072723",
+      },
     ],
     legalName: "基本情報技術者｜試験対策 - クイズで学ぶ問題集アプリ",
     legalPurpose: "基本情報技術者試験の利用・学習を支援するアプリケーション",
@@ -161,7 +173,7 @@ export const apps: AppInfo[] = [
     description: "クイズ形式の問題演習で、FP1級の合格を目指す学習アプリ。",
     longDescription:
       "FP1級技能検定（学科試験）の学習に対応した問題演習アプリです。練習モードと本番形式の試験モードで、スマートフォンから手軽に試験対策を進められます。",
-    platforms: "Android",
+    platforms: "Android・iOS",
     icon: "/assets/images/fp1.png",
     accent: "pink",
     kind: "learning",
@@ -177,6 +189,10 @@ export const apps: AppInfo[] = [
       {
         label: "Google Playで見る",
         href: "https://play.google.com/store/apps/details?id=net.aiautolab.fp1study",
+      },
+      {
+        label: "App Storeで見る",
+        href: "https://apps.apple.com/jp/app/id6835009561",
       },
     ],
     legalName: "FP1級｜試験対策 - クイズで学ぶ問題集アプリ",
